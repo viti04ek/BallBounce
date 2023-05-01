@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     private int _score = 0;
     public Text ScoreText;
 
+    public GameObject GameStartUI;
+
 
     void Awake()
     {
@@ -28,5 +30,12 @@ public class GameManager : MonoBehaviour
     {
         _score++;
         ScoreText.text = _score.ToString();
+    }
+
+
+    public void GameStart()
+    {
+        GameStartUI.SetActive(false);
+        Instance.ScoreText.gameObject.SetActive(true);
     }
 }
