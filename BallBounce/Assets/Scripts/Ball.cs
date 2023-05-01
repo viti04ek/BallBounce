@@ -19,7 +19,7 @@ public class Ball : MonoBehaviour
 
     void StartBounce()
     {
-        Vector2 randomDirection = new Vector2(Random.Range(-1f, 1f), 1f);
+        Vector2 randomDirection = new Vector2(Random.Range(-1, 1), 1);
 
         Rigidbody2D.AddForce(randomDirection * BounceForce, ForceMode2D.Impulse);
     }
@@ -27,7 +27,9 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "FallCheck")
+        if (collision.gameObject.CompareTag("FallCheck"))
             GameManager.Instance.Restart();
+        else if (collision.gameObject.CompareTag("Paddle"))
+            GameManager.Instance.ScoreUp();
     }
 }
