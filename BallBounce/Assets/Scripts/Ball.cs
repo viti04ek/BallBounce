@@ -34,4 +34,10 @@ public class Ball : MonoBehaviour
         else if (collision.gameObject.CompareTag("Paddle"))
             GameManager.Instance.ScoreUp();
     }
+
+
+    private void FixedUpdate()
+    {
+        Rigidbody2D.velocity = Rigidbody2D.velocity.normalized * BounceForce;
+    }
 }
